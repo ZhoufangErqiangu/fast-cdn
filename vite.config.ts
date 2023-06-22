@@ -4,6 +4,7 @@ import { Plugin, autoComplete } from "vite-plugin-cdn-import";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/dist",
   plugins: [
     Plugin({
       modules: [
@@ -29,19 +30,19 @@ export default defineConfig({
         },
         {
           name: "@fast-crud/ui-interface",
-          var: "FastCrudUiInterface",
-          path: "https://cdn.jsdelivr.net/npm/@fast-crud/ui-interface@1.11.6/dist/ui-interface.umd.min.js",
+          var: "FsUiInterface",
+          path: "https://cdn.jsdelivr.net/npm/@fast-crud/ui-interface@1.14.1/dist/ui-interface.umd.min.js",
         },
         {
           name: "@fast-crud/ui-element",
-          var: "FastCrudUiElement",
-          path: "https://cdn.jsdelivr.net/npm/@fast-crud/ui-element@1.11.7/dist/ui-element.umd.min.js",
+          var: "FsUiElement",
+          path: "https://cdn.jsdelivr.net/npm/@fast-crud/ui-element@1.14.1/dist/ui-element.umd.min.js",
         },
         {
           name: "@fast-curd/fast-crud",
-          var: "fast-crud",
-          path: "https://cdn.jsdelivr.net/npm/@fast-crud/fast-crud@1.11.7/dist/fast-crud.umd.min.js",
-          css: "https://cdn.jsdelivr.net/npm/@fast-crud/fast-crud@1.11.7/dist/style.css",
+          var: "FastCrud",
+          path: "https://cdn.jsdelivr.net/npm/@fast-crud/fast-crud@1.14.1/dist/fast-crud.umd.min.js",
+          css: "https://cdn.jsdelivr.net/npm/@fast-crud/fast-crud@1.14.1/dist/style.css",
         },
       ],
     }),

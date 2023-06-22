@@ -127,23 +127,23 @@
   resolved "https://registry.npmmirror.com/@esbuild/win32-x64/-/win32-x64-0.17.13.tgz#eca2698440d931b5a0fb8a5a29388c17adcb6bf5"
   integrity sha512-pZ/NIgz861XaUPlIkPFjP55nJ4PJa0o/CD4zgeRb1Q9FVE+8GvdB6ifJcK05jRhny5hKExhnRFIdgHmmCYH8vg==
 
-"@fast-crud/fast-crud@^1.11.8":
-  version "1.11.8"
-  resolved "https://registry.npmmirror.com/@fast-crud/fast-crud/-/fast-crud-1.11.8.tgz#7ef50f902a99cf5f1f1341d8fdc7fd50f619e64e"
-  integrity sha512-Tr6jU7VxhRp1MguRgNlOC2HVuz7MXG4Ob4xuoo/9gqtR3DcCJLRA0rQmKx3rRkambo21WF0xAUBBC2qjpnCYYg==
+"@fast-crud/fast-crud@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@fast-crud/fast-crud/-/fast-crud-1.14.1.tgz#26b85ebac34ee637031c11c03f692739b4ab951c"
+  integrity sha512-UuucVbJquxuskODitYRcjAN3SsW80kY5mp82MH0HpaEUxgTBv/9900BDSuHCy2s3Ucfutod9TDXG6ek99ZJHxQ==
   dependencies:
     lru-cache "^8.0.3"
     vuedraggable-es "^4.1.1"
 
-"@fast-crud/ui-element@^1.11.8":
-  version "1.11.8"
-  resolved "https://registry.npmmirror.com/@fast-crud/ui-element/-/ui-element-1.11.8.tgz#af9e3714afaa4bba288e2029844d5e77925f6b80"
-  integrity sha512-Ip/UtlbuRPKL3nA5wdT4kYKaORePAKUoe0pIyoa89YxOJfMOnTW0uP8PChSVAVSZTtNtzDrY/pN7L0vaxUnb+g==
+"@fast-crud/ui-element@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@fast-crud/ui-element/-/ui-element-1.14.1.tgz#06f65ef74a10c81ee0ffb5881fb1229335bae2c7"
+  integrity sha512-SQPmmNM/E7B9M2aHLPdtT6TSR5hiyV4zOKLrB3YwNNTJo5Snagb8BceX5zheyCoidBzcTtbMiRCTfxkCF5cljA==
 
-"@fast-crud/ui-interface@^1.11.8":
-  version "1.11.8"
-  resolved "https://registry.npmmirror.com/@fast-crud/ui-interface/-/ui-interface-1.11.8.tgz#a698512e561304cb64ef66e874d6d15ab33abb49"
-  integrity sha512-UnSWZrDTXCh0/43ZJ7Q9Q/BNUsadnIL6f3Fr0YboiH4jT6HB+FAdXNvHC9lXKn7v9UftoiaoD0vD0zO5PVUK+w==
+"@fast-crud/ui-interface@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@fast-crud/ui-interface/-/ui-interface-1.14.1.tgz#f643282b649702422e69f9552a04be1b32cd99f5"
+  integrity sha512-xnKqHPvGlal9TOkyXDWSJqK0TDvZ53SLbEVfD9XDiMWpo06DxMEDBSrFWTFHJI8wGDwMs1Yej8nGlKYaMxdDlA==
   dependencies:
     lodash-es "^4.17.21"
 
