@@ -9,10 +9,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       plugins: [
-        visualizer({
-          emitFile: true,
-          filename: "stats.html",
-        }),
+        // visualizer({
+        //   emitFile: true,
+        //   filename: "stats.html",
+        // }),
       ],
       external: [
         "vue",
