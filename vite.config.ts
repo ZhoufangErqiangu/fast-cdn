@@ -24,25 +24,6 @@ export default defineConfig({
         "@fast-crud/ui-element",
         "@fast-crud/fast-crud",
       ],
-      output: {
-        globals: {
-          vue: "Vue",
-          "vue-router": "VueRouter",
-          "element-plus": "ElementPlus",
-          "@element-plus/icons-vue": "ElementPlusIconsVue",
-          "@fast-crud/ui-interface": "FsUiInterface",
-          "@fast-crud/ui-element": "FsUiElement",
-          "@fast-crud/fast-crud": "FastCrud",
-        },
-        manualChunks: {
-          // "fast-curd": [
-          //   "@fast-crud/ui-interface",
-          //   "@fast-crud/ui-element",
-          //   "@fast-crud/fast-crud",
-          // ],
-          // other: ["lodash-es"],
-        },
-      },
     },
   },
 });
