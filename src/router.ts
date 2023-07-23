@@ -6,8 +6,8 @@ import {
 
 const routes: RouteRecordRaw[] = [];
 
-const base = "/dist";
-export const router = createRouter({
+const base = "/";
+const router = createRouter({
   history: createWebHashHistory(base),
   routes,
 });
