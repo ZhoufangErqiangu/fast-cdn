@@ -47,44 +47,40 @@ export class PluginImportMap implements VitePlugin {
   /**
    * vite plugin config
    */
-  public config = (cfg: UserConfig, env: ConfigEnv): UserConfig => {
+  public config = (cfg: UserConfig, env: ConfigEnv): UserConfig | null => {
     // set local
     const { root } = cfg;
     this.workPath = root ?? process.cwd();
     const { command } = env;
     this.isBuild = command === "build";
-    // use config
-    const userConfig: UserConfig = {
+    // change config when build
+    if (!this.isBuild) return null;
+    return {
       build: {
-        rollupOptions: {},
+        rollupOptions: {
+          external: Object.keys(this.moduleMap),
+        },
       },
     };
-    // set config if is build
-    if (this.isBuild) {
-      userConfig.build!.rollupOptions!.external = Object.keys(this.moduleMap);
-    }
-    return userConfig;
   };
   /**
    * vite plugin trancsfor html
    */
   public transformIndexHtml = (html: string): string => {
-    // build style
+    // build style all the time
     const styleCode = this.cssList
       .map((c) => {
         return `<link href="${c}" rel="stylesheet">`;
       })
       .join("\n");
-    // build script
+    // build script when build
     const scriptCode = this.isBuild
       ? `<script type="importmap">\n${JSON.stringify({
           imports: this.moduleMap,
         })}\n</script>`
       : "";
-    return html.replace(
-      /<\/title>/i,
-      `</title>\n${styleCode}${scriptCode}\n`,
-    );
+    // add style code and script code after title
+    return html.replace(/<\/title>/i, `</title>\n${styleCode}${scriptCode}\n`);
   };
 }
 
