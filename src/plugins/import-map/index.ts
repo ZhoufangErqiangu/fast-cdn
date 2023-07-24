@@ -1,5 +1,12 @@
+import {
+  ConfigEnv,
+  HtmlTagDescriptor,
+  IndexHtmlTransformResult,
+  ResolvedConfig,
+  UserConfig,
+  Plugin as VitePlugin,
+} from "vite";
 import { Module } from "./types";
-import { Plugin as VitePlugin, UserConfig, ConfigEnv } from "vite";
 
 export interface PluginImportMapParam {
   /**
@@ -10,13 +17,13 @@ export interface PluginImportMapParam {
 
 export class PluginImportMap implements VitePlugin {
   /**
-   * work path
-   *
-   * use vite root
-   *
-   * default is process.cwd()
+   * vite plugin name
    */
-  public workPath!: string;
+  public readonly name = "vite-plugin-import-map";
+  /**
+   * vite plugin version
+   */
+  public readonly version = "0.0.1";
   /**
    * if is build
    */
@@ -41,16 +48,10 @@ export class PluginImportMap implements VitePlugin {
   }
 
   /**
-   * vite plugin name
-   */
-  public name = "vite-plugin-import-map";
-  /**
    * vite plugin config
    */
   public config = (cfg: UserConfig, env: ConfigEnv): UserConfig | null => {
     // set local
-    const { root } = cfg;
-    this.workPath = root ?? process.cwd();
     const { command } = env;
     this.isBuild = command === "build";
     // change config when build
@@ -63,24 +64,43 @@ export class PluginImportMap implements VitePlugin {
       },
     };
   };
+
   /**
-   * vite plugin trancsfor html
+   * vite plugin config resloved
    */
-  public transformIndexHtml = (html: string): string => {
+  public configResolved = (cfg: ResolvedConfig) => {
+    const { command } = cfg;
+    this.isBuild = command === "build";
+  };
+
+  /**
+   * vite plugin trancsfor index html
+   */
+  public transformIndexHtml = (html: string): IndexHtmlTransformResult => {
     // build style all the time
-    const styleCode = this.cssList
-      .map((c) => {
-        return `<link href="${c}" rel="stylesheet">`;
-      })
-      .join("\n");
+    const styleTags: HtmlTagDescriptor[] = this.cssList.map((c) => {
+      return {
+        tag: "link",
+        attrs: {
+          href: c,
+          rel: "stylesheet",
+        },
+      };
+    });
     // build script when build
-    const scriptCode = this.isBuild
-      ? `<script type="importmap">\n${JSON.stringify({
-          imports: this.moduleMap,
-        })}\n</script>`
-      : "";
-    // add style code and script code after title
-    return html.replace(/<\/title>/i, `</title>\n${styleCode}${scriptCode}\n`);
+    const scriptTags: HtmlTagDescriptor[] = this.isBuild
+      ? [
+          {
+            tag: "script",
+            attrs: { type: "importmap" },
+            children: JSON.stringify({ imports: this.moduleMap }, undefined, 2),
+          },
+        ]
+      : [];
+    return {
+      html,
+      tags: styleTags.concat(scriptTags),
+    };
   };
 }
 
@@ -90,3 +110,5 @@ export class PluginImportMap implements VitePlugin {
 export function importMap(param: PluginImportMapParam) {
   return new PluginImportMap(param);
 }
+
+    export * from "./types";
